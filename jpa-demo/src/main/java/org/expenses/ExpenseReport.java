@@ -5,6 +5,7 @@ package org.expenses;
  */
 
 @javax.persistence.Entity
+@javax.persistence.Table(name = "EXPENSE_REPORT")
 public class ExpenseReport implements java.io.Serializable
 {
 
@@ -13,7 +14,7 @@ public class ExpenseReport implements java.io.Serializable
    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "EXPENSEREPORT_ID_GENERATOR")
    @javax.persistence.Id
    @javax.persistence.SequenceGenerator(sequenceName = "EXPENSEREPORT_ID_SEQ", name = "EXPENSEREPORT_ID_GENERATOR")
-   @javax.persistence.Column(name = "ID")
+   @javax.persistence.Column(unique = true, nullable = false)
    private java.lang.Long id;
 
    private java.lang.String user;
@@ -24,6 +25,9 @@ public class ExpenseReport implements java.io.Serializable
 
    @javax.persistence.OneToMany(cascade = { javax.persistence.CascadeType.ALL })
    private java.util.List<org.expenses.ExpenseReportLine> lines;
+
+   @javax.persistence.ElementCollection(fetch = javax.persistence.FetchType.EAGER)
+   private java.util.List<java.lang.String> notes;
 
    public ExpenseReport()
    {
@@ -79,15 +83,27 @@ public class ExpenseReport implements java.io.Serializable
       this.lines = lines;
    }
 
+   public java.util.List<java.lang.String> getNotes()
+   {
+      return this.notes;
+   }
+
+   public void setNotes(java.util.List<java.lang.String> notes)
+   {
+      this.notes = notes;
+   }
+
    public ExpenseReport(java.lang.Long id, java.lang.String user,
          java.util.Date created, java.lang.String status,
-         java.util.List<org.expenses.ExpenseReportLine> lines)
+         java.util.List<org.expenses.ExpenseReportLine> lines,
+         java.util.List<java.lang.String> notes)
    {
       this.id = id;
       this.user = user;
       this.created = created;
       this.status = status;
       this.lines = lines;
+      this.notes = notes;
    }
 
 }

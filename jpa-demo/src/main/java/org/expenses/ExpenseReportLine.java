@@ -5,28 +5,101 @@ package org.expenses;
  */
 
 @javax.persistence.Entity
-public class ExpenseReportLine implements java.io.Serializable {
+public class ExpenseReportLine implements java.io.Serializable
+{
 
-    static final long serialVersionUID = 1L;
+   static final long serialVersionUID = 1L;
 
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "EXPENSEREPORTLINE_ID_GENERATOR")
-    @javax.persistence.Id
-    @javax.persistence.SequenceGenerator(sequenceName = "EXPENSEREPORTLINE_ID_SEQ", name = "EXPENSEREPORTLINE_ID_GENERATOR")
-    private java.lang.Long id;
+   @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "EXPENSEREPORTLINE_ID_GENERATOR")
+   @javax.persistence.Id
+   @javax.persistence.SequenceGenerator(sequenceName = "EXPENSEREPORTLINE_ID_SEQ", name = "EXPENSEREPORTLINE_ID_GENERATOR")
+   @javax.persistence.Column(unique = true, nullable = false)
+   private java.lang.Long id;
 
-    public ExpenseReportLine() {
-    }
-    
-    public ExpenseReportLine(java.lang.Long id) {
-        this.id = id;
-    }
+   private java.lang.String department;
 
-    public java.lang.Long getId() {
-        return this.id;
-    }
-    
-    public void setId(java.lang.Long id) {
-        this.id = id;
-    }
+   private java.lang.String description;
+
+   private java.util.Date expenseDate;
+
+   private java.lang.String currency;
+
+   private java.lang.Double amount;
+
+   public ExpenseReportLine()
+   {
+   }
+
+   public java.lang.Long getId()
+   {
+      return this.id;
+   }
+
+   public void setId(java.lang.Long id)
+   {
+      this.id = id;
+   }
+
+   public java.lang.String getDepartment()
+   {
+      return this.department;
+   }
+
+   public void setDepartment(java.lang.String department)
+   {
+      this.department = department;
+   }
+
+   public java.lang.String getDescription()
+   {
+      return this.description;
+   }
+
+   public void setDescription(java.lang.String description)
+   {
+      this.description = description;
+   }
+
+   public java.util.Date getExpenseDate()
+   {
+      return this.expenseDate;
+   }
+
+   public void setExpenseDate(java.util.Date expenseDate)
+   {
+      this.expenseDate = expenseDate;
+   }
+
+   public java.lang.String getCurrency()
+   {
+      return this.currency;
+   }
+
+   public void setCurrency(java.lang.String currency)
+   {
+      this.currency = currency;
+   }
+
+   public java.lang.Double getAmount()
+   {
+      return this.amount;
+   }
+
+   public void setAmount(java.lang.Double amount)
+   {
+      this.amount = amount;
+   }
+
+   public ExpenseReportLine(java.lang.Long id, java.lang.String department,
+         java.lang.String description, java.util.Date expenseDate,
+         java.lang.String currency, java.lang.Double amount)
+   {
+      this.id = id;
+      this.department = department;
+      this.description = description;
+      this.expenseDate = expenseDate;
+      this.currency = currency;
+      this.amount = amount;
+   }
 
 }
