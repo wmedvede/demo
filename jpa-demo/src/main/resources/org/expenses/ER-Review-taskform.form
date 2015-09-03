@@ -50,7 +50,6 @@
 <property name="rangeFormula" value="{Marketing, Marketing;Engineering, Engineering;Quality, Quality;Sales, Sales;Management, Management;Support, Support}"/>
 <property name="isHTML" value="false"/>
 <property name="hideContent" value="false"/>
-<property name="defaultValueFormula" value="=&quot;Engineering&quot;"/>
 <property name="inputBinding" value="_expenseReport/department"/>
 <property name="outputBinding" value="expenseReport_/department"/>
 <property name="fieldClass" value="java.lang.String"/>
