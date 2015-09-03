@@ -11,7 +11,7 @@ public class ExpenseReport implements java.io.Serializable
 
    static final long serialVersionUID = 1L;
 
-   @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "EXPENSEREPORT_ID_GENERATOR")
+   @javax.persistence.GeneratedValue(generator = "EXPENSEREPORT_ID_GENERATOR", strategy = javax.persistence.GenerationType.AUTO)
    @javax.persistence.Id
    @javax.persistence.SequenceGenerator(sequenceName = "EXPENSEREPORT_ID_SEQ", name = "EXPENSEREPORT_ID_GENERATOR")
    @javax.persistence.Column(unique = true, nullable = false)
@@ -28,6 +28,8 @@ public class ExpenseReport implements java.io.Serializable
 
    @javax.persistence.ElementCollection(fetch = javax.persistence.FetchType.EAGER)
    private java.util.List<java.lang.String> notes;
+
+   private java.lang.String department;
 
    public ExpenseReport()
    {
@@ -93,10 +95,20 @@ public class ExpenseReport implements java.io.Serializable
       this.notes = notes;
    }
 
+   public java.lang.String getDepartment()
+   {
+      return this.department;
+   }
+
+   public void setDepartment(java.lang.String department)
+   {
+      this.department = department;
+   }
+
    public ExpenseReport(java.lang.Long id, java.lang.String user,
          java.util.Date created, java.lang.String status,
          java.util.List<org.expenses.ExpenseReportLine> lines,
-         java.util.List<java.lang.String> notes)
+         java.util.List<java.lang.String> notes, java.lang.String department)
    {
       this.id = id;
       this.user = user;
@@ -104,6 +116,7 @@ public class ExpenseReport implements java.io.Serializable
       this.status = status;
       this.lines = lines;
       this.notes = notes;
+      this.department = department;
    }
 
 }

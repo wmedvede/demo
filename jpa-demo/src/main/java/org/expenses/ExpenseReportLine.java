@@ -5,24 +5,21 @@ package org.expenses;
  */
 
 @javax.persistence.Entity
+@javax.persistence.Table(name = "EXPENSE_REPORT_LINE")
 public class ExpenseReportLine implements java.io.Serializable
 {
 
    static final long serialVersionUID = 1L;
 
-   @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "EXPENSEREPORTLINE_ID_GENERATOR")
+   @javax.persistence.GeneratedValue(generator = "EXPENSEREPORTLINE_ID_GENERATOR", strategy = javax.persistence.GenerationType.AUTO)
    @javax.persistence.Id
    @javax.persistence.SequenceGenerator(sequenceName = "EXPENSEREPORTLINE_ID_SEQ", name = "EXPENSEREPORTLINE_ID_GENERATOR")
    @javax.persistence.Column(unique = true, nullable = false)
    private java.lang.Long id;
 
-   private java.lang.String department;
-
    private java.lang.String description;
 
    private java.util.Date expenseDate;
-
-   private java.lang.String currency;
 
    private java.lang.Double amount;
 
@@ -38,16 +35,6 @@ public class ExpenseReportLine implements java.io.Serializable
    public void setId(java.lang.Long id)
    {
       this.id = id;
-   }
-
-   public java.lang.String getDepartment()
-   {
-      return this.department;
-   }
-
-   public void setDepartment(java.lang.String department)
-   {
-      this.department = department;
    }
 
    public java.lang.String getDescription()
@@ -70,16 +57,6 @@ public class ExpenseReportLine implements java.io.Serializable
       this.expenseDate = expenseDate;
    }
 
-   public java.lang.String getCurrency()
-   {
-      return this.currency;
-   }
-
-   public void setCurrency(java.lang.String currency)
-   {
-      this.currency = currency;
-   }
-
    public java.lang.Double getAmount()
    {
       return this.amount;
@@ -90,15 +67,12 @@ public class ExpenseReportLine implements java.io.Serializable
       this.amount = amount;
    }
 
-   public ExpenseReportLine(java.lang.Long id, java.lang.String department,
-         java.lang.String description, java.util.Date expenseDate,
-         java.lang.String currency, java.lang.Double amount)
+   public ExpenseReportLine(java.lang.Long id, java.lang.String description,
+         java.util.Date expenseDate, java.lang.Double amount)
    {
       this.id = id;
-      this.department = department;
       this.description = description;
       this.expenseDate = expenseDate;
-      this.currency = currency;
       this.amount = amount;
    }
 
